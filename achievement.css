@@ -1,0 +1,49 @@
+main{
+    margin-left: 100px;
+    margin-right: 100px;
+    align-content: center;
+    margin-top: 0;
+    padding-top: 0;
+}
+.backgrounda{
+    background-image: url("pic/back.png");
+    margin: 0;
+}
+.all_achievement{
+    display: flex;
+    margin-bottom: 1px;
+}
+.achievement1,.achievement2,.achievement3{
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    background-color: white;
+    height: 400px;
+    border-radius: 10px;
+}
+.achievement1:hover{
+    background-color: dodgerblue;
+    color:black;
+    opacity: 0.5;
+    transform: translate(-20px,12px);
+}
+.achievement2:hover{
+    background-color: dodgerblue;
+    color: white;
+    opacity: 0.5;
+    transform: translate(-20px,12px);
+}
+.achievement3:hover{
+    background-color: dodgerblue;
+    color: white;
+    opacity: 0.5;
+    transform: translate(-20px,12px);
+}
+.head1{
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: dodgerblue;
+    padding-top: 10px;
+}
+.backg{
+    background-color: lightgray;
+}

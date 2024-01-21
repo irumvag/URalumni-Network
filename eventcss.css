@@ -1,0 +1,38 @@
+main{
+    background-image: url('pic/back.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.all_events{
+    margin-left:200px;
+    margin-right:200px;
+    display: flex;
+}
+.event1,.event2,.event3{
+    background-color: white;
+    margin: 10px;
+    height: inherit;
+    padding: 10px;
+}
+.event1 h1,.event2 h1,.event3 h1{
+padding: 5px;
+color: dodgerblue;
+}
+.event1 p,.event2 p,.event3 p{
+    padding: 4px;
+    font-size: 20px;
+}
+.event1 p a,.event2 p a,.event3 p a{
+    text-align: right;
+    text-decoration: none;
+    color: tomato;
+}
+main h1{
+    color: dodgerblue;
+    text-align: center;
+    margin: 5px;
+    background-color: aliceblue;
+}
+.backg{
+    background-color: lightgray;
+}

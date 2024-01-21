@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Chat</title>
+  <style>
+    .chat-container {
+      max-width: 400px;
+      margin: auto;
+      border: 1px solid #ccc;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .chat-messages {
+      max-height: 300px;
+      overflow-y: auto;
+    }
+    input[type="text"] {
+      width: 70%;
+      padding: 8px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    button {
+      width: 28%;
+      padding: 10px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="chat-container">
+    <div class="chat-messages" id="chatMessages">
+    </div>
+
+    <div>
+      <input type="text" id="messageInput" placeholder="Type your message...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      var messageInput = document.getElementById("messageInput");
+      var chatMessages = document.getElementById("chatMessages");
+
+      if (messageInput.value.trim() !== "") {
+        var message = document.createElement("p");
+        message.textContent = messageInput.value;
+        chatMessages.appendChild(message);
+        messageInput.value = "";
+        messageInput.focus();
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+overview
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alumni Admin Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .dashboard-container {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+    }
+
+    .overview-section {
+      margin-bottom: 20px;
+    }
+
+    .overview-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-container">
+    <h1>Alumni Admin Dashboard</h1>
+
+    <div class="overview-section">
+      <h2>Overview</h2>
+
+      <div class="overview-item">
+        <span>Total Users:</span>
+        <span>500</span>
+      </div>
+
+      <div class="overview-item">
+        <span>Number of Events:</span>
+        <span>30</span>
+      </div>
+
+      <div class="overview-item">
+        <span>Number of Groups:</span>
+        <span>15</span>
+      </div>
+
+      <div class="overview-item">
+        <span>Number of Posts:</span>
+        <span>200</span>
+      </div>
+
+      <div class="overview-item">
+        <span>Total Messages Sent:</span>
+        <span>1000</span>
+      </div>
+
+      <!-- Add other useful information here -->
+    </div>
+
+    <!-- Add more sections and information as needed -->
+
+  </div>
+
+</body>
+</html>
+
+
+<?php 
+include 'connection.php';
+include 'session.php';
+
+$q=mysqli_query($conn,"SELECT * from booking where userID='$login_userID'");
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking History</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #101010;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        #booking-history {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ffcc00;
+            border-radius: 8px;
+            background-color: #101010;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        .booking-item {
+            border-bottom: 1px solid #ffcc00;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .hotel-name {
+            color: #ffffff;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .house-address {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .room-type {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .duration {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .amount {
+            color: #ffffff;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .remaining-days {
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .other-features {
+            color: #ffffff;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="booking-history">
+        <h2>Booking History</h2>
+        <?php
+        while($r=mysqli_fetch_assoc($q)){
+
+        $qr=mysqli_query($conn,"SELECT TOP 1 image_name,location FROM uploads WHERE articleID=$r['articleID']");
+        $g=mysqli_fetch_assoc($qr);
+        $ld=mysqli_query($conn,"SELECT * FROM Payment WHERE booking_id=$r['booking_id']");
+        $x=mysqli_fetch_assoc($ld);
+        echo  '<div class="booking-item">
+            <div class="hotel-name">'.$g['image_name'].'</div>
+            <div class="house-address">$g['location']</div>
+            <div class="room-type">Deluxe Room</div>
+            <div class="duration">Stay: 2024-02-01 to'.$r['booking_time'].'</div>
+            <div class="amount">'.$r[amount].'</div>
+            <div class="remaining-days">Payment method:'.$x['paymentmethod'].' </div>
+            <div class="other-features">Free Wi-Fi, Breakfast included</div>
+        </div>';
+        }
+        ?>
+        <div class="booking-item">
+            <div class="hotel-name">Hotel XYZ</div>
+            <div class="house-address">456 Oak Avenue</div>
+            <div class="room-type">Standard Room</div>
+            <div class="duration">Stay: 2024-03-10 to 2024-03-15</div>
+            <div class="amount">Paid Amount: $700</div>
+            <div class="remaining-days">Remaining Days: 5</div>
+            <div class="other-features">Swimming pool access</div>
+        </div>
+
+        <!-- Add more booking items as needed -->
+
+    </div>
+
+</body>
+
+</html>
